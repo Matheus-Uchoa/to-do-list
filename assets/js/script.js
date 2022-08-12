@@ -1,28 +1,44 @@
-const form = document.getElementById('input');
-const taskList = document.getElementById('tarefas');
+const form = document.getElementById('input')
+const taskList = document.getElementById('tarefas')
 
 form.onsubmit = function (a) {
-  a.preventDefault();
-  const inputField = document.getElementById('input-tarefas');
-  addTask(inputField.value);
-  form.reset();
+  a.preventDefault()
+  const inputField = document.getElementById('input-tarefas')
+  addTask(inputField.value)
+  form.reset()
 }
+
 function addTask(description) {
-  const taskContainer = document.createElement('div');
-  const newTask = document.createElement('input');
-  const taskLabel = document.createElement('label');
-  const taskDescriptionNode = document.createTextNode(description);
+  if (description == false) {
+   
+    alert("Favor não deixar o formulário em branco");
+  } 
 
-  newTask.setAttribute('type', 'checkbox');
-  newTask.setAttribute('name', description);
-  newTask.setAttribute('id', description);
+  else{
+     const taskContainer = document.createElement('div')
+    const newTask = document.createElement('input')
+    const taskLabel = document.createElement('label')
+    const taskDescriptionNode = document.createTextNode(description)
 
-  taskLabel.setAttribute('for', description);
-  taskLabel.appendChild(taskDescriptionNode);
+    newTask.setAttribute('type', 'checkbox')
+    newTask.setAttribute('name', description)
+    newTask.setAttribute('id', description)
 
-  taskContainer.classList.add('task-item');
-  taskContainer.appendChild(newTask);
-  taskContainer.appendChild(taskLabel);
+    taskLabel.setAttribute('for', description)
+    taskLabel.appendChild(taskDescriptionNode)
 
-  taskList.appendChild(taskContainer);
+    taskContainer.classList.add('task-item')
+    taskContainer.appendChild(newTask)
+    taskContainer.appendChild(taskLabel)
+
+    taskList.appendChild(taskContainer)
+  }
+ 
 }
+
+/*form.addEventListener('submit', function (event) {
+  for (let input of this.elements) {
+    if (!input.value) {
+      input.setAttribute('disabled', true)
+    }
+  }*/
